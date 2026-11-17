@@ -144,6 +144,11 @@ if (-not $pagesEnabled) {
         }
     }
     Write-Host "  -> Enabled GitHub Pages!" -ForegroundColor Green
+} else {
+    try {
+        $null = Invoke-RestMethod -Uri "https://api.github.com/repos/$Owner/$Repo/pages/builds" -Headers $headers -Method Post
+        Write-Host "  -> Triggered GitHub Pages cloud rebuild!" -ForegroundColor Green
+    } catch {}
 }
 
 $encodedLab = [Uri]::EscapeDataString($LabFolderName)
