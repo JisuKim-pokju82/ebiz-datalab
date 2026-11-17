@@ -424,20 +424,25 @@
       }
 
       grid.innerHTML = filtered.map(file => {
-        const meta = getIcon(file.name);
-        const href = './' + encodeURIComponent(file.name);
+        const isAllC2CSample = file.name.includes('세상의모든직거래');
+        const meta = isAllC2CSample
+          ? { icon: '📱', type: '모바일 실동작 샘플 (GitHub Pages)' }
+          : getIcon(file.name);
+        const href = isAllC2CSample
+          ? 'https://jisukim-pokju82.github.io/kcar-c2c-all-search/'
+          : './' + encodeURIComponent(file.name);
         const updatedText = file.updatedAt ? ` · ${file.updatedAt}` : '';
         return `
           <a class="file-card" href="${href}" target="_blank" rel="noopener">
             <div class="file-top">
               <div class="file-icon">${meta.icon}</div>
               <div>
-                <div class="file-name">${file.name}</div>
-                <div class="file-meta">${meta.type} · ${formatBytes(file.size)}${updatedText}</div>
+                <div class="file-name">${isAllC2CSample ? '케이카 안심직거래 × 세상의 모든 직거래 (모바일 샘플)' : file.name}</div>
+                <div class="file-meta">${meta.type}${isAllC2CSample ? ' · 당근·엔카·KB·케이카 통합검색' : ' · ' + formatBytes(file.size)}${updatedText}</div>
               </div>
             </div>
             <div class="file-footer">
-              <span>바로 열기 / 다운로드</span>
+              <span>${isAllC2CSample ? '모바일 샘플 바로 열기' : '바로 열기 / 다운로드'}</span>
               <span>→</span>
             </div>
           </a>
