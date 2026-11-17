@@ -10,8 +10,10 @@
   - **바이크 직거래 현황보고 (5대 플랫폼)**: [https://jisukim-pokju82.github.io/c2c-bike-trend-tracker/](https://jisukim-pokju82.github.io/c2c-bike-trend-tracker/)
 - **2) 보증 개선**
   - **케이카 보증 2.0 개편 보고**: [https://jisukim-pokju82.github.io/ebiz-datalab/warranty/](https://jisukim-pokju82.github.io/ebiz-datalab/warranty/)
-- **3) 기타 폴더 (Research Archive)**
-  - **기타 리서치 아카이브 뷰어**: [https://jisukim-pokju82.github.io/ebiz-datalab/기타/](https://jisukim-pokju82.github.io/ebiz-datalab/%EA%B8%B0%ED%83%80/)
+- **3) eBiz 연구실 (케이카닷컴)**
+  - **eBiz 연구실 통합 뷰어**: [https://jisukim-pokju82.github.io/ebiz-datalab/eBiz 연구실 (케이카닷컴)/](https://jisukim-pokju82.github.io/ebiz-datalab/eBiz%20%EC%97%B0%EA%B5%AC%EC%8B%A4%20(%EC%BC%80%EC%9D%B4%EC%B9%B4%EB%8B%B7%EC%BB%B4)/)
+  - **AI Car Purchase System Mockup (케이카 AI매입시스템)**: [https://jisukim-pokju82.github.io/buythecar/](https://jisukim-pokju82.github.io/buythecar/)
+  - **케이카 안심직거래 × 세상의 모든 직거래 통합검색 샘플**: [https://jisukim-pokju82.github.io/kcar-c2c-all-search/](https://jisukim-pokju82.github.io/kcar-c2c-all-search/)
 
 ---
 
@@ -19,6 +21,6 @@
 - `index.html`: **e-biz실 데이터랩 메인페이지** (PC / Mobile 반응형 및 뷰포트 전환 스위치 내장, 경쟁사 실시간 지표 자동 연동)
 - `assets/images/`: 데이터랩 전용 고해상도 비주얼 에셋
 - `warranty/`: 보증 2.0 TF 개편 보고서 (`보증2.0TF_보증개편보고_최최종_261110.html` 탑재)
-- `기타/`: 수시 리서치·보고서 아카이브 폴더
-  - 로컬 PC에서 `SUMMARY\기타` 폴더에 새 파일을 넣고 **`깃허브_업로드.bat`** 을 실행하거나,
-  - PC가 꺼져 있을 때 GitHub 웹의 `기타/` 폴더에 직접 파일을 업로드하면 아카이브 페이지에 자동 반영됩니다.
+- `eBiz 연구실 (케이카닷컴)/`: 케이카닷컴 AI 목업·프로토타입·수시 리서치 연구실 폴더
+  - 로컬 PC에서 `SUMMARY\eBiz 연구실 (케이카닷컴)` 폴더에 새 파일을 넣고 **`깃허브_업로드.bat`** 을 실행하거나,
+  - PC가 꺼져 있을 때 GitHub 웹의 `eBiz 연구실 (케이카닷컴)/` 폴더에 직접 파일을 업로드하면 연구실 페이지에 자동 반영됩니다.

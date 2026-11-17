@@ -1,10 +1,10 @@
-name: Sync 기타 Folder Manifest
+name: Sync eBiz 연구실 Manifest
 
 on:
   push:
     branches: [ main ]
     paths:
-      - '기타/**'
+      - 'eBiz 연구실 (케이카닷컴)/**'
   workflow_dispatch:
 
 permissions:
@@ -17,12 +17,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Rebuild 기타/manifest.json
+      - name: Rebuild eBiz 연구실 (케이카닷컴)/manifest.json
         run: |
           python3 - << 'EOF'
           import json, os, datetime
 
-          folder = "기타"
+          folder = "eBiz 연구실 (케이카닷컴)"
           hidden = {"index.html", "manifest.json", ".gitkeep"}
           files = []
           now_str = (datetime.datetime.utcnow() + datetime.timedelta(hours=9)).strftime("%Y-%m-%d")
@@ -49,8 +49,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if ! git diff --quiet -- "기타/manifest.json"; then
-            git add "기타/manifest.json"
-            git commit -m "chore(archive): auto-update 기타/manifest.json [skip ci]"
+          if ! git diff --quiet -- "eBiz 연구실 (케이카닷컴)/manifest.json"; then
+            git add "eBiz 연구실 (케이카닷컴)/manifest.json"
+            git commit -m "chore(lab): auto-update eBiz 연구실 (케이카닷컴)/manifest.json [skip ci]"
             git push
           fi
