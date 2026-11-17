@@ -23,7 +23,7 @@ jobs:
           import json, os, datetime
 
           folder = "eBiz 연구실 (케이카닷컴)"
-          hidden = {"index.html", "manifest.json", ".gitkeep"}
+          hidden = {"index.html", "manifest.json", ".gitkeep", "README_사용안내.md"}
           files = []
           now_str = (datetime.datetime.utcnow() + datetime.timedelta(hours=9)).strftime("%Y-%m-%d")
 

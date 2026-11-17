@@ -34,7 +34,7 @@ $labDir = Join-Path $WorkDir $LabFolderName
 if (-not (Test-Path -LiteralPath $labDir)) {
     New-Item -ItemType Directory -Force -Path $labDir | Out-Null
 }
-$hiddenLab = @("index.html", "manifest.json", ".gitkeep")
+$hiddenLab = @("index.html", "manifest.json", ".gitkeep", "README_사용안내.md")
 $labFiles = @()
 Get-ChildItem -LiteralPath $labDir -File -Force | Sort-Object Name | ForEach-Object {
     if ($hiddenLab -notcontains $_.Name) {

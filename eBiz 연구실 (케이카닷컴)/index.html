@@ -421,9 +421,10 @@
     <div class="topbar-inner">
       <a href="../index.html" class="back-btn">← e-biz실 데이터랩 메인으로</a>
       <div class="topbar-right">
-        <a href="https://github.com/JisuKim-pokju82/ebiz-datalab/tree/main/eBiz%20%EC%97%B0%EA%B5%AC%EC%8B%A4%20(%EC%BC%80%EC%9D%B4%EC%B9%B4%EB%8B%B7%EC%BB%B4)" target="_blank" rel="noopener" class="gh-btn">
-          🧪 GitHub eBiz 연구실 폴더 열기 / 파일 추가
-        </a>
+        <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,0.05);border:1px solid rgba(148,163,184,0.24);">
+          <span style="font-size:10px;font-weight:800;letter-spacing:0.14em;color:#94a3b8;text-transform:uppercase;">Curated by</span>
+          <span style="font-size:12.5px;font-weight:900;background:linear-gradient(135deg,#fff 20%,#7dd3fc 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Ji-Su, Kim</span>
+        </div>
       </div>
     </div>
   </header>
@@ -434,7 +435,7 @@
         <span class="badge">CATEGORY 03 · eBiz R&amp;D LAB (KCAR.COM)</span>
         <h1 class="hero-title">eBiz 연구실 (케이카닷컴)</h1>
         <p class="hero-desc">
-          케이카닷컴 신사업·AI 서비스 프로토타입 목업과 수시 리서치 산출물을 모아둔 클라우드 연구실입니다. <code>SUMMARY\eBiz 연구실 (케이카닷컴)</code> 폴더에 새 파일을 추가하면 자동으로 이곳에 연결됩니다.
+          케이카닷컴 신규 서비스 프로토타입 목업, AI 매입·통합검색 UX 샘플 및 수시 전략 리서치 산출물을 제공하는 통합 연구실입니다.
         </p>
       </div>
       <div class="hero-visual">
@@ -497,20 +498,17 @@
 
     <div class="file-grid" id="fileGrid"></div>
 
-    <section class="guide-box">
-      <h3>💡 eBiz 연구실 (케이카닷컴)에 새 목업·보고서 추가하는 방법 (PC OFF 상시 구동)</h3>
-      <ol>
-        <li><strong>내 PC에서 올릴 때:</strong> 바탕화면 <code>SUMMARY\eBiz 연구실 (케이카닷컴)</code> 폴더에 파일(HTML 목업, PDF, 데이터 등)을 넣은 뒤 <code>깃허브_업로드.bat</code>을 더블클릭하면 자동으로 업로드됩니다.</li>
-        <li><strong>외부/모바일에서 PC 없이 올릴 때:</strong> 우측 상단 <strong>[GitHub eBiz 연구실 폴더 열기]</strong> 버튼 → <code>Add file &gt; Upload files</code>로 파일을 올리면 즉시 이 목록에 자동 반영됩니다.</li>
-      </ol>
-    </section>
+    <footer style="margin-top:48px;padding-top:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:12.5px;color:var(--text-muted);">
+      <span><strong>K Car e-biz실 데이터랩</strong> · eBiz 연구실 (케이카닷컴)</span>
+      <span>Directed &amp; Curated by <strong style="color:#f8fafc;">Ji-Su, Kim</strong></span>
+    </footer>
   </main>
 
   <script>
     const OWNER = 'JisuKim-pokju82';
     const REPO = 'ebiz-datalab';
     const FOLDER_NAME = 'eBiz 연구실 (케이카닷컴)';
-    const HIDDEN_FILES = new Set(['index.html', 'manifest.json', '.gitkeep']);
+    const HIDDEN_FILES = new Set(['index.html', 'manifest.json', '.gitkeep', 'README_사용안내.md']);
 
     function getIcon(name) {
       const ext = (name.split('.').pop() || '').toLowerCase();
