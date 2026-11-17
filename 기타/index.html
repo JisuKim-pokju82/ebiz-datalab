@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>기타 리서치 아카이브 | e-biz실 데이터랩</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <style>
+    :root {
+      --bg-deep: #070b14;
+      --bg-surface: #0f172a;
+      --bg-card: rgba(17, 25, 45, 0.78);
+      --bg-card-hover: rgba(25, 37, 66, 0.92);
+      --border: rgba(148, 163, 184, 0.16);
+      --border-accent: rgba(56, 189, 248, 0.42);
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --accent-cyan: #38bdf8;
+      --accent-red: #e52528;
+      --accent-violet: #818cf8;
+      --font-sans: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, 'Malgun Gothic', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-sans);
+      background: radial-gradient(circle at 15% 0%, rgba(56, 189, 248, 0.12), transparent 42%),
+                  radial-gradient(circle at 85% 10%, rgba(229, 37, 40, 0.10), transparent 38%),
+                  var(--bg-deep);
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      word-break: keep-all;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 11, 20, 0.86);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+    }
+
+    .topbar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 700;
+      transition: all 0.18s ease;
+    }
+
+    .back-btn:hover {
+      background: rgba(56, 189, 248, 0.16);
+      border-color: var(--border-accent);
+      transform: translateX(-2px);
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .gh-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 10px;
+      background: rgba(56, 189, 248, 0.13);
+      border: 1px solid rgba(56, 189, 248, 0.32);
+      color: #7dd3fc;
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      transition: all 0.18s ease;
+    }
+
+    .gh-btn:hover {
+      background: rgba(56, 189, 248, 0.24);
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.94), rgba(15, 23, 42, 0.72));
+      padding: 36px;
+      margin-bottom: 28px;
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(129, 140, 248, 0.16);
+      border: 1px solid rgba(129, 140, 248, 0.35);
+      color: #a5b4fc;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+    }
+
+    .hero-title {
+      font-size: clamp(24px, 3.2vw, 34px);
+      font-weight: 900;
+      letter-spacing: -0.025em;
+      margin-bottom: 10px;
+    }
+
+    .hero-desc {
+      color: var(--text-secondary);
+      font-size: 15px;
+      max-width: 660px;
+    }
+
+    .hero-visual {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      aspect-ratio: 16 / 10;
+      background: #0b1324;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .toolbar-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 240px;
+      max-width: 420px;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 11px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--accent-cyan);
+    }
+
+    .count-pill {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .file-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+
+    .file-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px;
+      border-radius: 18px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+    }
+
+    .file-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-accent);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
+    }
+
+    .file-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .file-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      flex-shrink: 0;
+    }
+
+    .file-name {
+      font-size: 15.5px;
+      font-weight: 800;
+      color: var(--text-primary);
+      word-break: break-all;
+      margin-bottom: 4px;
+    }
+
+    .file-meta {
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
+
+    .file-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 12px;
+      border-top: 1px solid rgba(148, 163, 184, 0.1);
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--accent-cyan);
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 56px 24px;
+      border-radius: 20px;
+      border: 1px dashed rgba(148, 163, 184, 0.28);
+      background: rgba(15, 23, 42, 0.5);
+    }
+
+    .empty-title {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .empty-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin: 0 auto 20px;
+    }
+
+    .guide-box {
+      margin-top: 32px;
+      padding: 22px 24px;
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.68);
+      border: 1px solid var(--border);
+      font-size: 13.5px;
+      color: var(--text-secondary);
+    }
+
+    .guide-box h3 {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: #f8fafc;
+      margin-bottom: 8px;
+    }
+
+    .guide-box ol {
+      padding-left: 18px;
+      display: grid;
+      gap: 5px;
+    }
+
+    code {
+      padding: 2px 6px;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.08);
+      font-size: 12.5px;
+      color: #7dd3fc;
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 24px 16px 64px; }
+      .hero-card { grid-template-columns: 1fr; padding: 24px 20px; }
+      .topbar { padding: 12px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="../index.html" class="back-btn">← e-biz실 데이터랩 메인으로</a>
+      <div class="topbar-right">
+        <a href="https://github.com/JisuKim-pokju82/ebiz-datalab/tree/main/%EA%B8%B0%ED%83%80" target="_blank" rel="noopener" class="gh-btn">
+          📂 GitHub 기타 폴더 직접 열기 / 파일 업로드
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero-card">
+      <div>
+        <span class="badge">CATEGORY 03 · RESEARCH ARCHIVE</span>
+        <h1 class="hero-title">기타 리서치 &amp; 수시 보고서 아카이브</h1>
+        <p class="hero-desc">
+          <code>SUMMARY\기타</code> 폴더(또는 GitHub 웹의 <code>기타/</code> 폴더)에 HTML 리포트, PDF, CSV, 이미지 파일을 넣으면 자동으로 이 페이지에 카드 형태로 연결됩니다. 로컬 PC가 꺼져 있어도 GitHub 클라우드에서 상시 열람할 수 있습니다.
+        </p>
+      </div>
+      <div class="hero-visual">
+        <img src="../assets/images/cat-archive.jpg" alt="기타 리서치 아카이브 비주얼" onerror="this.style.display='none'" />
+      </div>
+    </section>
+
+    <div class="toolbar-row">
+      <div class="search-box">
+        <input type="search" id="searchInput" class="search-input" placeholder="파일명 또는 확장자로 검색 (예: 보고서, html, pdf)..." />
+      </div>
+      <div class="count-pill" id="fileCountLabel">아카이브 스캔 중...</div>
+    </div>
+
+    <div class="file-grid" id="fileGrid"></div>
+
+    <section class="guide-box">
+      <h3>💡 기타 폴더에 새 자료 추가하는 2가지 방법 (PC OFF 상시 구동)</h3>
+      <ol>
+        <li><strong>내 PC에서 올릴 때:</strong> 바탕화면 <code>SUMMARY\기타</code> 폴더에 파일(HTML, PDF, 엑셀 등)을 넣은 뒤 <code>깃허브_업로드.bat</code>을 더블클릭하면 자동으로 GitHub에 업로드됩니다.</li>
+        <li><strong>외부/모바일에서 PC 없이 올릴 때:</strong> 우측 상단 <strong>[GitHub 기타 폴더 직접 열기]</strong> 버튼 → <code>Add file &gt; Upload files</code>로 파일을 올리면 즉시 이 목록에 자동 반영됩니다.</li>
+      </ol>
+    </section>
+  </main>
+
+  <script>
+    const OWNER = 'JisuKim-pokju82';
+    const REPO = 'ebiz-datalab';
+    const HIDDEN_FILES = new Set(['index.html', 'manifest.json', '.gitkeep']);
+
+    function getIcon(name) {
+      const ext = (name.split('.').pop() || '').toLowerCase();
+      if (ext === 'html' || ext === 'htm') return { icon: '📊', type: '웹 리포트 (HTML)' };
+      if (ext === 'pdf') return { icon: '📕', type: '문서 (PDF)' };
+      if (['csv', 'xlsx', 'xls'].includes(ext)) return { icon: '📈', type: '데이터 시트' };
+      if (['ppt', 'pptx'].includes(ext)) return { icon: '📑', type: '프레젠테이션' };
+      if (['png', 'jpg', 'jpeg', 'webp', 'svg'].includes(ext)) return { icon: '🖼️', type: '이미지 자료' };
+      if (ext === 'md' || ext === 'txt') return { icon: '📝', type: '노트 / 안내문' };
+      return { icon: '📁', type: ext ? ext.toUpperCase() + ' 파일' : '첨부 자료' };
+    }
+
+    function formatBytes(bytes) {
+      if (!bytes || isNaN(bytes)) return '-';
+      if (bytes < 1024) return bytes + ' B';
+      if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+      return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+    }
+
+    let allFiles = [];
+
+    function renderFiles(query = '') {
+      const grid = document.getElementById('fileGrid');
+      const countLabel = document.getElementById('fileCountLabel');
+      const q = query.trim().toLowerCase();
+      const filtered = allFiles.filter(f => !q || f.name.toLowerCase().includes(q));
+
+      countLabel.textContent = `등록된 자료 총 ${filtered.length}건`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-title">${q ? '검색 조건에 맞는 파일이 없습니다.' : '현재 기타 폴더에 등록된 추가 리포트가 없습니다.'}</div>
+            <p class="empty-desc">
+              <code>SUMMARY\\기타</code> 폴더에 HTML·PDF·데이터 파일을 넣고 업로드하거나, GitHub 웹에서 직접 파일을 추가하면 이곳에 자동으로 표시됩니다.
+            </p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(file => {
+        const meta = getIcon(file.name);
+        const href = './' + encodeURIComponent(file.name);
+        const updatedText = file.updatedAt ? ` · ${file.updatedAt}` : '';
+        return `
+          <a class="file-card" href="${href}" target="_blank" rel="noopener">
+            <div class="file-top">
+              <div class="file-icon">${meta.icon}</div>
+              <div>
+                <div class="file-name">${file.name}</div>
+                <div class="file-meta">${meta.type} · ${formatBytes(file.size)}${updatedText}</div>
+              </div>
+            </div>
+            <div class="file-footer">
+              <span>바로 열기 / 다운로드</span>
+              <span>→</span>
+            </div>
+          </a>
+        `;
+      }).join('');
+    }
+
+    async function loadArchive() {
+      const merged = new Map();
+
+      // 1. manifest.json 로드 (로컬/오프라인 및 기본 인덱스)
+      try {
+        const res = await fetch('./manifest.json?t=' + Date.now());
+        if (res.ok) {
+          const data = await res.json();
+          (data.files || []).forEach(f => {
+            if (!HIDDEN_FILES.has(f.name)) merged.set(f.name, f);
+          });
+        }
+      } catch (_) {}
+
+      // 2. GitHub Contents API 실시간 조회 (웹에서 직접 업로드한 신규 파일까지 즉시 감지)
+      try {
+        const apiRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${encodeURIComponent('기타')}`);
+        if (apiRes.ok) {
+          const items = await apiRes.json();
+          if (Array.isArray(items)) {
+            items.forEach(item => {
+              if (item.type === 'file' && !HIDDEN_FILES.has(item.name)) {
+                const prev = merged.get(item.name) || {};
+                merged.set(item.name, {
+                  name: item.name,
+                  size: item.size,
+                  updatedAt: prev.updatedAt || ''
+                });
+              }
+            });
+          }
+        }
+      } catch (_) {}
+
+      allFiles = Array.from(merged.values()).sort((a, b) => a.name.localeCompare(b.name, 'ko'));
+      renderFiles();
+    }
+
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      renderFiles(e.target.value);
+    });
+
+    loadArchive();
+  </script>
+</body>
+</html>
